@@ -29,6 +29,8 @@ jobs:
         uses: matlab-actions/run-command@v2.1.1
         with:
           command: branch ="${{ github.head_ref }}", diffGitHub_pullrequest(branch)
+      - name: Compare Models to Ancestors  
+        run: xvfb-run path-to-matlab/bin/matlab -batch "branch ='${{ github.head_ref }}'; diffGitHub_pullrequest(branch)"
       - name: Upload Comparison Reports
         uses: actions/upload-artifact@v3
         with:
