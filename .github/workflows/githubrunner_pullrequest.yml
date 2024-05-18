@@ -26,7 +26,7 @@ jobs:
          export DISPLAY=:99
          echo "DISPLAY=:99" >> $GITHUB_ENV
       - name: Compare Models to Ancestors
-        uses: matlab-actions/run-command@v1
+        uses: matlab-actions/run-command@v2
         with:
           command: branch ="${{ github.head_ref }}", diffGitHub_pullrequest(branch)
       - name: Upload Comparison Reports
@@ -35,7 +35,7 @@ jobs:
            name: diffreports
            path: ${{ github.workspace }}/*.html
       - name: Run All Project Tests
-        uses: matlab-actions/run-command@v1
+        uses: matlab-actions/run-command@v2
         with:
           command: runtests
 
